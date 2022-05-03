@@ -22,6 +22,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-family-headings);
+  margin: 24px 0;
 }
 
 a {
@@ -147,15 +148,10 @@ input[type=text] {
   padding: 48px 0;
 }
 
-.latest-blog-posts h2 {
-  margin: 0;
-}
-
 .posts {
   display: flex;
   gap: 32px;
   overflow: auto;
-  padding: 48px 0;
 }
 
 .post-element {
