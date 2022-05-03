@@ -115,6 +115,7 @@ header .hamburger-menu {
 
 .hero-banner-mobile img {
   width: 100%;
+  border-radius: 0;
 }
 
 input[type=text] {
