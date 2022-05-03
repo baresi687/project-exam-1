@@ -1,0 +1,155 @@
+:root {
+  --font-family-headings: 'Lato', sans-serif;
+  --font-family-paragraphs: 'Archivo', sans-serif;
+  --text-color: #343434;
+  --body-background-color: #FAF9F6;
+  --brand-links-color: #D95323;
+  --brand-color-light: #F2865E;
+  --gutter-sm-8: 8px;
+  --gutter-m-16: 16px;
+  --gutter-m-32: 32px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--body-background-color);
+  color: var(--text-color);
+  font-family: var(--font-family-paragraphs);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headings);
+}
+
+a {
+  text-decoration: none;
+  color: var(--brand-links-color);
+  font-weight: 600;
+}
+
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 2px;
+}
+
+p {
+  line-height: 24px;
+}
+
+.container {
+  max-width: 360px;
+  margin: 0 auto;
+}
+
+.button {
+  background-color: var(--brand-links-color);
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  color: var(--body-background-color);
+  cursor: pointer;
+}
+
+.header-navigation {
+  display: flex;
+  justify-content: space-between;
+  height: 64px;
+}
+
+header .logo {
+  max-width: 168px;
+  padding: var(--gutter-sm-8) 0 var(--gutter-m-16) 0;
+}
+
+header .hamburger-menu {
+  position: relative;
+  font-size: 24px;
+  color: var(--brand-links-color);
+  padding: 20px 0;
+  cursor: pointer;
+}
+
+.navigation {
+  position: absolute;
+  width: 100%;
+  background-color: var(--body-background-color);
+  opacity: 0;
+  transform: translateX(-380px);
+  transition: all .3s ease-out;
+}
+
+.navigation .container {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--body-background-color);
+  padding: 24px 0;
+}
+
+.show-menu {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.navigation .container a {
+  border-bottom: 1px solid #f2d0c4a1;
+  padding: 16px 0;
+}
+
+.navigation button {
+  margin-top: 24px;
+}
+
+.hero-banner-mobile img {
+  width: 100%;
+}
+
+input[type=text] {
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  text-indent: 8px;
+}
+
+.newsletter form {
+  background-color: var(--brand-color-light);
+  padding: 24px;
+  border-radius: 16px;
+  border: none;
+  display: flex;
+  gap: 16px;
+}
+
+.newsletter label, .newsletter label input {
+  width: 100%;
+}
+
+.newsletter input:nth-child(2) {
+  min-width: 80px;
+}
+
+.latest-blog-posts {
+  padding: 48px 0;
+}
+
+.latest-blog-posts h2 {
+  margin: 0;
+}
+
+.posts {
+  display: flex;
+  gap: 32px;
+  overflow: scroll;
+  padding: 48px 0;
+}
+
+.post-element {
+  min-width: 176px;
+}
+
+.post-element button, .post-element img {
+  width: 100%;
+}
