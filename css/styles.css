@@ -41,6 +41,11 @@ p {
   line-height: 24px;
 }
 
+ul {
+  padding: 0;
+  list-style: none;
+}
+
 .container {
   max-width: 360px;
   margin: 0 auto;
@@ -156,8 +161,55 @@ input[type=text] {
 
 .post-element {
   min-width: 176px;
+  min-height: 296px;
+  position: relative;
 }
 
-.post-element button, .post-element img {
+.post-element h3 {
+  font-size: 1.125rem;
+}
+
+.post-element button {
+  position: absolute;
+  bottom: 8px;
+}
+
+.post-element button, .post-element img, .donate button {
   width: 100%;
+}
+
+.donate {
+  background-image: url("/img/pattern.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 48px 0;
+  color: var(--body-background-color);
+}
+
+.donate h2 {
+  margin-top: 0;
+}
+
+.footer-content > div {
+  padding-top: 48px;
+}
+
+footer ul li, footer a, .footer-about p:nth-child(2) {
+  font-weight: 100;
+}
+
+footer a {
+  color: #343434;
+  font-weight: 100;
+}
+
+footer ul li {
+  padding: var(--gutter-sm-8) 0;
+}
+
+.edu-paragraph {
+  text-align: center;
+  padding-top: 48px;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
