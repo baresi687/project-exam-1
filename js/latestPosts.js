@@ -7,7 +7,6 @@ arrowLeft.onclick = () => {
 }
 
 arrowRight.onclick = () => {
-  scrollValue.scrollLeft = 0;
   scrollValue.scrollLeft += 832;
 }
 
