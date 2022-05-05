@@ -1,0 +1,15 @@
+.about-paragraphs p:last-of-type {
+  margin-bottom: 24px;
+}
+
+@media screen and (min-width: 767px) {
+  .about-img-paragraph {
+    display: flex;
+    gap: 32px;
+    padding-bottom: 72px;
+  }
+
+  .about-img, .about-paragraphs {
+    flex: 1;
+  }
+}

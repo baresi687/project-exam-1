@@ -1,12 +1,12 @@
-const latestPostsArrowLeft = document.querySelector(".fa-angle-left");
-const latestPostsArrowRight = document.querySelector(".fa-angle-right");
+const arrowLeft = document.querySelector(".fa-angle-left");
+const arrowRight = document.querySelector(".fa-angle-right");
 const scrollValue = document.querySelector(".posts")
 
-latestPostsArrowLeft.onclick = () => {
+arrowLeft.onclick = () => {
   scrollValue.scrollLeft -= 832;
 }
 
-latestPostsArrowRight.onclick = () => {
+arrowRight.onclick = () => {
   scrollValue.scrollLeft = 0;
   scrollValue.scrollLeft += 832;
 }
@@ -15,10 +15,10 @@ const postsContainer = document.querySelector(".posts");
 const url = "https://hreinngylfason.site/projectexam/wp-json/wp/v2/posts?_embed&per_page=12";
 
 async function getLatestPosts() {
+  postsContainer.innerHTML = `<div class="loader"></div>`;
   try {
     const response = await fetch(url);
     const responseJSON = await response.json();
-    console.log(responseJSON);
 
     responseJSON.forEach((item) => {
 
@@ -37,9 +37,12 @@ async function getLatestPosts() {
     })
 
   } catch (error) {
-    console.log(error)
+    postsContainer.innerHTML = `<div class="error-msg">
+                                  <strong>Something went wrong ...</strong>
+                                  <strong>Please try again later</strong>
+                                </div>`
   } finally {
-
+    document.querySelector(".loader").style.display = "none";
   }
 }
 
