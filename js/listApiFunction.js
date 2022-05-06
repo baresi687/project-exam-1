@@ -1,6 +1,6 @@
 async function getListPosts(htmlCont, apiUrl, htmlFunction) {
 
-  htmlCont.innerHTML = `<div class="loader"></div>`;
+  htmlCont.innerHTML += `<div class="loader"></div>`;
 
   try {
     const response = await fetch(apiUrl);
@@ -24,7 +24,10 @@ async function getListPosts(htmlCont, apiUrl, htmlFunction) {
                             <strong>Please try again later</strong>
                           </div>`
   } finally {
-    document.querySelector(".loader").style.display = "none";
+    const loader = document.querySelectorAll(".loader");
+    loader.forEach((item) => {
+      item.style.display = "none";
+    })
   }
 }
 
