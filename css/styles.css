@@ -113,6 +113,7 @@ header .hamburger-menu {
 .navigation {
   padding: 24px 0;
   position: absolute;
+  z-index: 1;
   top: 64px;
   width: 100%;
   opacity: 0;
