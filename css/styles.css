@@ -260,6 +260,8 @@ footer ul li {
 }
 
 .loader {
+  margin: 0 auto;
+  max-width: 64px;
   width: 64px;
   height: 64px;
   border: 8px solid #c0c0c0;
@@ -281,6 +283,7 @@ footer ul li {
 .error-msg {
   width: 100%;
   padding: 24px;
+  margin-bottom: 32px;
   background-color: #f6dcdd;
   color: #c9646a;
   border-radius: var(--gutter-sm-8);
@@ -425,5 +428,6 @@ footer ul li {
 
   .error-msg {
     width: fit-content;
+    margin: 0 auto 32px auto;
   }
 }

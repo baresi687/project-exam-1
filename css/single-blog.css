@@ -1,0 +1,36 @@
+h1.heading-1 {
+  margin-bottom: 0;
+}
+
+.blog-author-date {
+  margin: 8px 0 32px 0;
+  font-weight: 200;
+}
+
+.single-blog {
+  margin-bottom: 32px;
+}
+
+.single-blog-content p:first-of-type {
+  margin-top: 32px;
+}
+
+@media screen and (min-width: 767px) {
+  .single-blog-container {
+    display: flex;
+    flex-flow: row-reverse;
+    gap: 32px;
+  }
+
+  .single-blog-content {
+    flex: 1.5;
+  }
+
+  .single-blog-img {
+    flex: 1;
+  }
+
+  .single-blog-content p:first-of-type {
+    margin-top: 0;
+  }
+}

@@ -23,6 +23,11 @@ async function getListPosts(htmlCont, apiUrl, htmlFunction) {
                             <strong>Something went wrong ...</strong>
                             <strong>Please try again later</strong>
                           </div>`
+
+    if (document.querySelector(".view-more-btn")) {
+      document.querySelector(".view-more-btn").style.display = "none";
+    }
+    
   } finally {
     const loader = document.querySelectorAll(".loader");
     loader.forEach((item) => {
