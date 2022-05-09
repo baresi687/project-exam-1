@@ -28,7 +28,7 @@ async function getSingleBlogPost() {
     document.querySelector(".blog-author-date").innerText = `By ${author} on ${formattedDate}`;
 
     singleBlogContainer.innerHTML = `<div class="single-blog-img">
-                                       <img src="${imageFull}" alt="${altText}" class="blog-img img-width-100">  
+                                       <img src="${imageFull}" alt="${altText}" class="blog-img img-width-100">                                        
                                      </div>
                                      <div class="single-blog-content">
                                        ${singleBlogContent}
@@ -52,14 +52,16 @@ setTimeout(openModal, 200);
 function openModal() {
   const modal = document.querySelector(".modal")
   const modalImg = document.querySelector(".modal-img");
-  const imgClick = document.querySelector(".single-blog-img img");
+  const imgClick = document.querySelectorAll(".single-blog-img img");
   const closeModalBtn = document.querySelector(".modal span")
 
-  imgClick.onclick = function () {
-    modal.classList.add("show-modal");
-    modalImg.src = this.src;
-    modalImg.alt = this.alt;
-  }
+  imgClick.forEach((item) => {
+    item.onclick = function () {
+      modal.classList.add("show-modal");
+      modalImg.src = this.src;
+      modalImg.alt = this.alt;
+    }
+  })
 
   closeModalBtn.onclick = function () {
     modal.classList.remove("show-modal");

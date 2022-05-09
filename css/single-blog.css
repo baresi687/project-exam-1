@@ -36,6 +36,7 @@ h1.heading-1 {
 .modal-img {
   margin: auto;
   display: block;
+  max-width: 600px;
 }
 
 .close-modal-btn {
