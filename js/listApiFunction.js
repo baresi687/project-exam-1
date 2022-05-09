@@ -27,7 +27,7 @@ async function getListPosts(htmlCont, apiUrl, htmlFunction) {
     if (document.querySelector(".view-more-btn")) {
       document.querySelector(".view-more-btn").style.display = "none";
     }
-    
+
   } finally {
     const loader = document.querySelectorAll(".loader");
     loader.forEach((item) => {
@@ -37,7 +37,7 @@ async function getListPosts(htmlCont, apiUrl, htmlFunction) {
 }
 
 function getLatestBlogs(itemId, thumbnail, altText, heading) {
-  return `<a href="./single-blog.html?id=${itemId}">
+  return `<a href="./single-blog.html?id=${itemId}" class="single-blog-link">
             <div class="post-element">                                     
               <img src="${thumbnail}" alt="${altText}">
               <h3>${heading}</h3>                                     
@@ -47,18 +47,16 @@ function getLatestBlogs(itemId, thumbnail, altText, heading) {
 }
 
 function getBlogs(itemId, thumbnail, altText, heading, excerpt) {
-  return `<div class="blog-posts-element">
-            <div>
-              <a href="./single-blog.html?id=${itemId}">
+  return `<a href="./single-blog.html?id=${itemId}">
+            <div class="blog-posts-element">
+              <div>
                 <img src="${thumbnail}" alt="${altText}" class="img-width-100">
-              </a>
-            </div>
-            <div>
-              <h2>${heading}</h2>
-              ${excerpt}
-              <a href="./single-blog.html?id=${itemId}">
+              </div>
+              <div>
+                <h2>${heading}</h2>
+                ${excerpt}
                 <button class="button button-transparent">Read More</button>
-              </a>
+             </div>
            </div>
-         </div>`
+         </a>`
 }

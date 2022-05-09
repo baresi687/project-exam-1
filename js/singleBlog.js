@@ -47,7 +47,7 @@ async function getSingleBlogPost() {
 
 getSingleBlogPost();
 
-setTimeout(openModal, 200);
+setTimeout(openModal, 300);
 
 function openModal() {
   const modal = document.querySelector(".modal")

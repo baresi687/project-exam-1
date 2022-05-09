@@ -1,3 +1,7 @@
+.blog-posts-container a:hover {
+  text-decoration: none;
+}
+
 .blog-posts-element {
   display: flex;
   gap: var(--gutter-m-16);
@@ -18,16 +22,23 @@
 .blog-posts-element div h2 {
   font-size: 1.125rem;
   margin: 0;
+  color: var(--text-color);
 }
 
 .blog-posts-element p {
   display: none;
+  color: var(--text-color);
 }
 
-.blog-posts-element div button {
+.button-transparent {
   width: 100%;
   position: absolute;
   bottom: 0;
+}
+
+.button-transparent:hover {
+  color: var(--body-background-color);
+  background-color: var(--brand-links-color);
 }
 
 .view-more-btn {
@@ -59,6 +70,7 @@
 
   .blog-posts-element p {
     display: block;
+    font-weight: 400;
   }
 
   .blog-posts-element div button {

@@ -85,6 +85,7 @@ img {
   background-color: transparent;
   color: var(--brand-links-color);
   border: 1px solid var(--brand-links-color);
+  transition: all .2s ease-in-out;
 }
 
 .header-navigation {
@@ -184,6 +185,15 @@ input[type=text] {
   display: flex;
   gap: 32px;
   overflow: auto;
+}
+
+.single-blog-link:hover {
+  text-decoration: none;
+}
+
+.single-blog-link:hover .button-transparent {
+  color: var(--body-background-color);
+  background-color: var(--brand-links-color);
 }
 
 .post-element {
