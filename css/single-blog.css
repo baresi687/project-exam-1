@@ -15,6 +15,50 @@ h1.heading-1 {
   margin-top: 32px;
 }
 
+.modal .container {
+  position: relative;
+  z-index: 5;
+}
+
+.modal {
+  position: fixed;
+  z-index: 4;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding-top: 120px;
+  background-color: rgba(0, 0, 0, 0.84);
+  opacity: 0;
+  visibility: hidden;
+  transition: all .1s linear;
+}
+
+.modal-img {
+  margin: auto;
+  display: block;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: -64px;
+  right: 0;
+  color: var(--body-background-color);
+  font-size: 48px;
+}
+
+.close-modal-btn:hover {
+  color: gray;
+}
+
+.blog-img, .close-modal-btn {
+  cursor: pointer;
+}
+
+.show-modal {
+  opacity: 1;
+  visibility: visible;
+}
+
 @media screen and (min-width: 767px) {
   .single-blog-container {
     display: flex;

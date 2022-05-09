@@ -28,7 +28,7 @@ async function getSingleBlogPost() {
     document.querySelector(".blog-author-date").innerText = `By ${author} on ${formattedDate}`;
 
     singleBlogContainer.innerHTML = `<div class="single-blog-img">
-                                       <img src="${imageFull}" alt="${altText}" class="img-width-100">  
+                                       <img src="${imageFull}" alt="${altText}" class="blog-img img-width-100">  
                                      </div>
                                      <div class="single-blog-content">
                                        ${singleBlogContent}
@@ -45,4 +45,29 @@ async function getSingleBlogPost() {
   }
 }
 
-getSingleBlogPost()
+getSingleBlogPost();
+
+setTimeout(openModal, 200);
+
+function openModal() {
+  const modal = document.querySelector(".modal")
+  const modalImg = document.querySelector(".modal-img");
+  const imgClick = document.querySelector(".single-blog-img img");
+  const closeModalBtn = document.querySelector(".modal span")
+
+  imgClick.onclick = function () {
+    modal.classList.add("show-modal");
+    modalImg.src = this.src;
+    modalImg.alt = this.alt;
+  }
+
+  closeModalBtn.onclick = function () {
+    modal.classList.remove("show-modal");
+  }
+
+  modal.onclick = function (event) {
+    if (!event.target.classList.contains("modal-img")) {
+      modal.classList.remove("show-modal");
+    }
+  }
+}
