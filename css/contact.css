@@ -5,6 +5,11 @@ form {
   border-radius: 16px;
 }
 
+form > div {
+  position: relative;
+  margin-bottom: 32px;
+}
+
 .contact form h1 {
   text-align: center;
   margin: 0 0 48px 0;
@@ -19,9 +24,31 @@ form textarea {
   height: 160px;
 }
 
-form input:not(:last-of-type), form textarea {
-  margin-bottom: 32px;
+form input[type=text], form textarea {
   border: 1px solid #D0D0D0;
+  padding-right: 40px;
+}
+
+.contact form i {
+  position: absolute;
+  right: 8px;
+  top: 40px;
+  font-size: 16px;
+  color: #07994b;
+  visibility: hidden;
+}
+
+.contact .show-checkmark {
+  visibility: visible;
+}
+
+.input-error {
+  margin: 16px 0;
+  color: #e6382c;
+}
+
+.input-error-border {
+  border: 1px solid #e6382c !important;
 }
 
 .contact-image {
