@@ -15,11 +15,11 @@
       href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400&family=Lato:ital,wght@0,300;0,400;0,700;1,300&display=swap"
       rel="stylesheet">
   <link rel="stylesheet" href="./css/normalize.css"/>
-  <link rel="stylesheet" href="./css/single-blog.css"/>
+  <link rel="stylesheet" href="./css/contact.css"/>
   <link rel="stylesheet" href="./css/styles.css"/>
-  <script src="./js/singleBlog.js" defer></script>
+  <script src="./js/contact.js" defer></script>
   <script src="./js/script.js" defer></script>
-  <title class="single-blog-title">Pawtalk | Blog | </title>
+  <title>Pawtalk | Contact</title>
 </head>
 <body>
 <header>
@@ -47,22 +47,31 @@
       <div class="breadcrumb">
         <ul>
           <li><a href="./">Home</a></li>
-          <li><a href="./blog.html">Blog</a></li>
-          <li class="single-blog-title"></li>
+          <li>Contact</li>
         </ul>
       </div>
-      <h1 class="heading-1 single-blog-title"></h1>
-      <p class="blog-author-date"></p>
     </div>
   </section>
-  <section class="single-blog">
+  <section class="contact">
     <div class="container">
-      <div class="single-blog-container"></div>
-    </div>
-    <div class="modal">
-      <div class="container">
-        <span class="close-modal-btn"><i class="fa-solid fa-xmark"></i></span>
-        <img class="modal-img img-width-100" src="" alt="">
+      <div class="contact-main">
+        <div class="contact-form">
+          <form>
+            <h1 class="heading-1">Contact</h1>
+            <label for="name">Name</label>
+            <input type="text" id="name">
+            <label for="email">Email</label>
+            <input type="text" id="email">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject">
+            <label for="message">Message</label>
+            <textarea id="message"></textarea>
+            <input type="submit" class="button">
+          </form>
+        </div>
+        <div class="contact-image">
+          <h2>Get in touch</h2>
+        </div>
       </div>
     </div>
   </section>

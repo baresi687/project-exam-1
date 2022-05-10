@@ -149,7 +149,7 @@ header .hamburger-menu {
   border-radius: 0;
 }
 
-input[type=text] {
+input[type=text], textarea {
   height: 40px;
   border-radius: 8px;
   border: none;
@@ -165,7 +165,7 @@ input[type=text] {
   gap: 16px;
 }
 
-.newsletter label, .newsletter label input {
+.newsletter label, .newsletter label input, .contact input, .contact textarea {
   width: 100%;
 }
 
