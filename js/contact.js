@@ -8,32 +8,36 @@ const messageError = "Message must be more than 25 characters";
 inputs.forEach((item) => {
   item.addEventListener("focus", function () {
     item.addEventListener("keyup", function () {
-      if (item.id === "name") {
-        checkLength(this, item.value, 5)
-      }
-      if (item.id === "email") {
-        validateEmail(this, item.value)
-      }
-      if (item.id === "subject") {
-        checkLength(this, item.value, 15)
-      }
-      if (item.id === "message") {
-        checkLength(this, item.value, 25)
+      switch (item.id) {
+        case "name":
+          checkLength(this, item.value, 5);
+          break;
+        case "email":
+          validateEmail(this, item.value);
+          break;
+        case "subject":
+          checkLength(this, item.value, 15);
+          break;
+        case "message":
+          checkLength(this, item.value, 25);
+          break;
       }
     })
     item.addEventListener("blur", function () {
       if (item.value) {
-        if (item.id === "name") {
-          validateString(this, item.value, 5, nameError)
-        }
-        if (item.id === "email") {
-          validateString(this, item.value, null, emailError)
-        }
-        if (item.id === "subject") {
-          validateString(this, item.value, 15, subjectError)
-        }
-        if (item.id === "message") {
-          validateString(this, item.value, 25, messageError)
+        switch (item.id) {
+          case "name":
+            validateString(this, item.value, 5, nameError);
+            break;
+          case "email":
+            validateString(this, item.value, null, emailError);
+            break;
+          case "subject":
+            validateString(this, item.value, 15, subjectError);
+            break;
+          case "message":
+            validateString(this, item.value, 25, messageError);
+            break;
         }
       }
     })
@@ -81,8 +85,8 @@ function validateString(elem, value, length, errorMsg) {
   }
 }
 
-function checkLength(elem, value, len) {
-  if (value.trim().length > len) {
+function checkLength(elem, value, length) {
+  if (value.trim().length > length) {
     elem.nextElementSibling.classList.add("show-checkmark")
     document.querySelector(`#${elem.id} ~ .input-error`).innerHTML = "";
     return true;

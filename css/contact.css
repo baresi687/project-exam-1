@@ -22,6 +22,7 @@ form label {
 
 form textarea {
   height: 160px;
+  padding-top: 8px;
 }
 
 form input[type=text], form textarea {
@@ -47,8 +48,8 @@ form input[type=text], form textarea {
   color: #e6382c;
 }
 
-.input-error-border {
-  border: 1px solid #e6382c !important;
+.contact .input-error-border {
+  border: 1px solid #e6382c;
 }
 
 .form-success {
