@@ -177,7 +177,7 @@ input[type=text], textarea {
   padding: 48px 0;
 }
 
-.fa-angle-left, .fa-angle-right {
+.fa-angle-left, .fa-angle-right, .dots-container {
   display: none;
 }
 
@@ -398,7 +398,7 @@ footer ul li {
   .fa-angle-left, .fa-angle-right {
     display: initial;
     position: absolute;
-    bottom: 144px;
+    bottom: 176px;
     font-size: 48px;
     background-color: var(--body-background-color);
     border-radius: 50%;
@@ -417,6 +417,25 @@ footer ul li {
     scroll-behavior: smooth;
     max-width: 800px;
     margin: 0 auto;
+  }
+
+  .dots-container {
+    display: block;
+    text-align: center;
+    margin-top: 40px;
+  }
+
+  .dots {
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    margin: 0 8px;
+    background-color: #D0D0D0;
+    border-radius: 50%;
+  }
+
+  .dots-container .active {
+    background-color: var(--brand-links-color);
   }
 
   .donate .container {
