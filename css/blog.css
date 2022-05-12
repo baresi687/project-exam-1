@@ -2,6 +2,10 @@
   text-decoration: none;
 }
 
+.blog-posts-container .loader {
+  margin-top: 72px;
+}
+
 .blog-posts-element {
   display: flex;
   gap: var(--gutter-m-16);
@@ -47,17 +51,22 @@
 
 @media screen and (min-width: 767px) {
   .blog-posts-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 32px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 32px;
+  }
+
+  .blog-posts-container .loader {
+    margin: 0 100%;
+    position: relative;
+    left: 50%;
+    top: 24px;
   }
 
   .blog-posts-element {
     display: flex;
     flex-direction: column;
-    max-width: 19.65625rem;
     margin: 0;
-    gap: 16px;
   }
 
   .blog-posts-element div img {
