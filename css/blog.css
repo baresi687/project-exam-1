@@ -71,6 +71,7 @@
 
   .blog-posts-element div img {
     width: 100%;
+    display: block;
   }
 
   .blog-posts-element div h2 {
