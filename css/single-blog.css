@@ -15,6 +15,10 @@ h1.heading-1 {
   margin-top: 32px;
 }
 
+.single-blog-img .featured-img {
+  position: relative;
+}
+
 .modal .container {
   position: relative;
   z-index: 5;
@@ -45,6 +49,7 @@ h1.heading-1 {
   right: 0;
   color: var(--body-background-color);
   font-size: 48px;
+  cursor: pointer;
 }
 
 .close-modal-btn:hover {
@@ -77,5 +82,23 @@ h1.heading-1 {
 
   .single-blog-content p:first-of-type {
     margin-top: 0;
+  }
+
+  .single-blog-container .blog-img {
+    display: block;
+  }
+
+  .single-blog-img .featured-img:before {
+    content: "\f424";
+    font-family: 'FontAwesome', sans-serif;
+    font-size: 16px;
+    padding: 4px;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    color: var(--body-background-color);
+    background-color: #404040;
+    border-radius: 4px;
+    pointer-events: none;
   }
 }
