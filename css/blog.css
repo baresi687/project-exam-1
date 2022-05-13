@@ -1,3 +1,37 @@
+.sort-filter #sort-blogs, .sort-filter #filter-blogs {
+  height: initial;
+  border: 1px solid #D0D0D0;
+  border-radius: 8px;
+  padding: 4px;
+  color: var(--text-color);
+}
+
+#sort-blogs option {
+  background-color: var(--body-background-color);
+  color: var(--text-color);
+}
+
+.sort-filter {
+  display: inline-flex;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.sort-filter div {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+.sort-filter label {
+  white-space: nowrap;
+  margin-right: 8px;
+}
+
+.sort-filter #filter-blogs {
+  width: 100%;
+}
+
 .blog-posts-container a:hover {
   text-decoration: none;
 }
@@ -50,6 +84,10 @@
 }
 
 @media screen and (min-width: 767px) {
+  .sort-filter {
+    margin-bottom: 40px;
+  }
+
   .blog-posts-container {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;

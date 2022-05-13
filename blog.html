@@ -70,6 +70,20 @@
   </section>
   <section class="blog">
     <div class="container">
+      <div class="sort-filter">
+        <div>
+          <label for="sort-blogs">Sort by:</label>
+          <select id="sort-blogs">
+            <option value="latest">Latest</option>
+            <option value="latest">Comments</option>
+            <option value="latest">Name</option>
+          </select>
+        </div>
+        <div>
+          <label for="filter-blogs">Filter: </label>
+          <input type="text" id="filter-blogs">
+        </div>
+      </div>
       <div class="blog-posts-container"></div>
       <div class="view-more-btn">
         <button class="button img-width-100">View more posts</button>
