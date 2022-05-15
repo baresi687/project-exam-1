@@ -5,7 +5,6 @@ async function getListPosts(htmlCont, apiUrl, htmlFunction) {
   try {
     const response = await fetch(apiUrl);
     const responseJSON = await response.json();
-    const originalResponseJSON = [...responseJSON];
 
     if (document.querySelector(".sort-filter")) {
       const sortBlogs = document.querySelector(".sort-filter #sort-blogs")
@@ -17,24 +16,19 @@ async function getListPosts(htmlCont, apiUrl, htmlFunction) {
         responseJSON.sort(sortByName);
       }
 
-      sortBlogs.onchange = ((event) => {
-        const sortValue = event.target.value;
+      sortBlogs.onchange = (() => {
         htmlCont.innerHTML = "";
-        switch (sortValue) {
-          case "latest":
-            getListPosts(blogPostsContainer, url, getBlogs);
-            break;
-          case "comments":
-            originalResponseJSON.sort(sortByComments)
-            sortablePosts(originalResponseJSON);
-            break;
-          case "name":
-            responseJSON.sort(sortByName);
-            sortablePosts(responseJSON);
-            break;
-          default:
-            break;
-        }
+        getListPosts(blogPostsContainer, url, getBlogs);
+      })
+
+      const filterBlogs = document.querySelector("#filter-blogs")
+      filterBlogs.addEventListener("keyup", (event) => {
+        htmlCont.innerHTML = "";
+        const currentValue = event.target.value.trim().toLowerCase();
+        const renderedBlog = responseJSON.filter(function (arr) {
+          return arr.title.rendered.toLowerCase().includes(currentValue)
+        })
+        sortablePosts(renderedBlog);
       })
     }
 
@@ -52,6 +46,7 @@ async function getListPosts(htmlCont, apiUrl, htmlFunction) {
 
       })
     }
+
   } catch (error) {
     console.log(error)
     htmlCont.innerHTML = `<div class="error-msg">
