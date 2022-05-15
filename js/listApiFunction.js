@@ -5,20 +5,55 @@ async function getListPosts(htmlCont, apiUrl, htmlFunction) {
   try {
     const response = await fetch(apiUrl);
     const responseJSON = await response.json();
+    const originalResponseJSON = [...responseJSON];
 
-    responseJSON.forEach((item) => {
+    if (document.querySelector(".sort-filter")) {
+      const sortBlogs = document.querySelector(".sort-filter #sort-blogs")
 
-      const itemId = item.id;
-      const thumbnail = item._embedded["wp:featuredmedia"][0].media_details.sizes.thumbnail.source_url;
-      const altText = item._embedded["wp:featuredmedia"][0].alt_text;
-      const heading = item.title.rendered;
-      const excerpt = item.excerpt.rendered;
+      if (sortBlogs.value === "comments") {
+        responseJSON.sort(sortByComments);
+      }
+      if (sortBlogs.value === "name") {
+        responseJSON.sort(sortByName);
+      }
 
-      htmlCont.innerHTML += htmlFunction(itemId, thumbnail, altText, heading, excerpt);
+      sortBlogs.onchange = ((event) => {
+        const sortValue = event.target.value;
+        htmlCont.innerHTML = "";
+        switch (sortValue) {
+          case "latest":
+            getListPosts(blogPostsContainer, url, getBlogs);
+            break;
+          case "comments":
+            originalResponseJSON.sort(sortByComments)
+            sortablePosts(originalResponseJSON);
+            break;
+          case "name":
+            responseJSON.sort(sortByName);
+            sortablePosts(responseJSON);
+            break;
+          default:
+            break;
+        }
+      })
+    }
 
-    })
+    sortablePosts(responseJSON);
 
+    function sortablePosts(responseJSON) {
+      responseJSON.forEach((item) => {
+        const itemId = item.id;
+        const thumbnail = item._embedded["wp:featuredmedia"][0].media_details.sizes.thumbnail.source_url;
+        const altText = item._embedded["wp:featuredmedia"][0].alt_text;
+        const heading = item.title.rendered;
+        const excerpt = item.excerpt.rendered;
+
+        htmlCont.innerHTML += htmlFunction(itemId, thumbnail, altText, heading, excerpt);
+
+      })
+    }
   } catch (error) {
+    console.log(error)
     htmlCont.innerHTML = `<div class="error-msg">
                             <strong>Something went wrong ...</strong>
                             <strong>Please try again later</strong>
@@ -34,29 +69,4 @@ async function getListPosts(htmlCont, apiUrl, htmlFunction) {
       item.style.display = "none";
     })
   }
-}
-
-function getLatestBlogs(itemId, thumbnail, altText, heading) {
-  return `<a href="./single-blog.html?id=${itemId}" class="single-blog-link">
-            <div class="post-element">                                     
-              <img src="${thumbnail}" alt="${altText}">
-              <h3>${heading}</h3>                                     
-              <button class="button button-transparent">Read More</button>    
-            </div>
-          </a>`
-}
-
-function getBlogs(itemId, thumbnail, altText, heading, excerpt) {
-  return `<a href="./single-blog.html?id=${itemId}">
-            <div class="blog-posts-element">
-              <div>
-                <img src="${thumbnail}" alt="${altText}" class="img-width-100">
-              </div>
-              <div>
-                <h2>${heading}</h2>
-                ${excerpt}
-                <button class="button button-transparent">Read More</button>
-             </div>
-           </div>
-         </a>`
 }
