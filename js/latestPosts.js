@@ -38,3 +38,13 @@ const postsContainer = document.querySelector(".posts");
 const url = "https://hreinngylfason.site/projectexam/wp-json/wp/v2/posts?_embed&per_page=12";
 
 getListPosts(postsContainer, url, getLatestBlogs);
+
+function getLatestBlogs(itemId, thumbnail, altText, heading) {
+  return `<a href="./single-blog.html?id=${itemId}" class="single-blog-link">
+            <div class="post-element">                                     
+              <img src="${thumbnail}" alt="${altText}">
+              <h3>${heading}</h3>                                     
+              <button class="button button-transparent">Read More</button>    
+            </div>
+          </a>`
+}
