@@ -156,6 +156,15 @@ input[type=text], textarea {
   text-indent: 8px;
 }
 
+form label {
+  display: block;
+}
+
+form input[type=text]:not(#newsletter), form textarea {
+  border: 1px solid #D0D0D0;
+  padding-right: 40px;
+}
+
 .newsletter form {
   background-color: var(--brand-color-light);
   padding: 24px;
