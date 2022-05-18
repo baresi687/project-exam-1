@@ -2,6 +2,7 @@ const param = new URLSearchParams(window.location.search);
 const blogId = param.get("id")
 const url = `https://hreinngylfason.site/projectexam/wp-json/wp/v2/posts/${blogId}?_embed`;
 const singleBlogContainer = document.querySelector(".single-blog-container");
+const commentsContainer = document.querySelector(".comments");
 
 async function getSingleBlogPost() {
 
@@ -13,11 +14,7 @@ async function getSingleBlogPost() {
 
     const heading = responseJSON.title.rendered;
     const author = responseJSON._embedded.author[0].name;
-    const formattedDate = new Date(responseJSON.date).toLocaleDateString('en-US', {
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric'
-    })
+    const formattedDate = formatWpDate(responseJSON.date);
     const imageFull = responseJSON._embedded["wp:featuredmedia"][0].media_details.sizes.full.source_url;
     const altText = responseJSON._embedded["wp:featuredmedia"][0].alt_text;
     const singleBlogContent = responseJSON.content.rendered;
@@ -34,13 +31,29 @@ async function getSingleBlogPost() {
                                      </div>
                                      <div class="single-blog-content">
                                        ${singleBlogContent}
+                                       <span class="author-signed">- ${author}</span>
                                      </div>`
+
+    if (responseJSON._embedded.replies) {
+      const comments = responseJSON._embedded.replies[0];
+
+      comments.forEach((item) => {
+        const commentDate = formatWpDate(item.date)
+        commentsContainer.innerHTML += `<div class="single-comment">
+                                          <strong>${item.author_name} </strong>on <span>${commentDate}</span>
+                                           ${item.content.rendered}
+                                        </div>`
+      })
+    } else {
+      document.querySelector(".single-blog-comments h3").style.display = "none";
+    }
 
   } catch (error) {
     singleBlogContainer.innerHTML = `<div class="error-msg">
                                        <strong>Something went wrong ...</strong>
                                        <strong>Please try again later</strong>
                                      </div>`
+    document.querySelector(".single-blog-main-comments").style.display = "none";
 
   } finally {
 
@@ -48,6 +61,14 @@ async function getSingleBlogPost() {
 }
 
 getSingleBlogPost();
+
+const formatWpDate = (wpdate) => {
+  return new Date(wpdate).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+}
 
 setTimeout(openModal, 300);
 

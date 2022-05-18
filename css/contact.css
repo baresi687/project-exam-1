@@ -16,18 +16,12 @@ form > div {
 }
 
 form label {
-  display: block;
   padding-bottom: 8px;
 }
 
 form textarea {
   height: 160px;
   padding-top: 8px;
-}
-
-form input[type=text], form textarea {
-  border: 1px solid #D0D0D0;
-  padding-right: 40px;
 }
 
 .contact form i {
