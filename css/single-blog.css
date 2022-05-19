@@ -26,43 +26,6 @@ h1.heading-1 {
   position: relative;
 }
 
-.single-blog-main-comments, .leave-a-comment {
-  margin-top: 40px;
-}
-
-.single-comment {
-  box-shadow: 0 0 4px 1px #706f6f47;
-  padding: 16px;
-  border-radius: 8px;
-  margin-bottom: 32px;
-}
-
-.single-comment p {
-  margin-bottom: 0;
-}
-
-form label {
-  padding-bottom: 4px;
-}
-
-form > div {
-  margin-bottom: 16px;
-}
-
-form textarea, form input {
-  width: 100%;
-}
-
-small {
-  padding: 0 0 24px 0;
-  display: block;
-}
-
-#comment-message {
-  height: auto;
-  padding-top: 8px;
-}
-
 .modal .container {
   position: relative;
   z-index: 5;
@@ -109,6 +72,44 @@ small {
   visibility: visible;
 }
 
+.single-blog-main-comments, .leave-a-comment {
+  margin-top: 40px;
+}
+
+.single-comment {
+  box-shadow: 0 0 4px 1px #706f6f47;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 32px;
+}
+
+.single-comment p {
+  margin-bottom: 0;
+}
+
+form > div {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+form textarea, form input {
+  width: 100%;
+}
+
+small {
+  padding: 0 0 24px 0;
+  display: block;
+}
+
+#comment-message {
+  height: auto;
+  padding-top: 8px;
+}
+
+.message {
+  margin-top: 32px;
+}
+
 @media screen and (min-width: 767px) {
   .single-blog-container {
     display: flex;
@@ -144,6 +145,10 @@ small {
     background-color: #404040;
     border-radius: 4px;
     pointer-events: none;
+  }
+
+  .leave-a-comment .message {
+    margin: 32px auto 32px auto;
   }
 
   .single-blog-main-comments .container {

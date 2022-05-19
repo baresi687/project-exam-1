@@ -1,4 +1,6 @@
-async function getListPosts(htmlCont, apiUrl, htmlFunction) {
+import {displayMessage} from "./components/message.js";
+
+export async function getListPosts(htmlCont, apiUrl, htmlFunction, sortFunction1, sortFunction2) {
 
   htmlCont.innerHTML += `<div class="loader"></div>`;
 
@@ -10,15 +12,15 @@ async function getListPosts(htmlCont, apiUrl, htmlFunction) {
       const sortBlogs = document.querySelector(".sort-filter #sort-blogs")
 
       if (sortBlogs.value === "comments") {
-        responseJSON.sort(sortByComments);
+        responseJSON.sort(sortFunction1);
       }
       if (sortBlogs.value === "name") {
-        responseJSON.sort(sortByName);
+        responseJSON.sort(sortFunction2);
       }
 
       sortBlogs.onchange = (() => {
         htmlCont.innerHTML = "";
-        getListPosts(blogPostsContainer, url, getBlogs);
+        getListPosts(htmlCont, apiUrl, htmlFunction, sortFunction1, sortFunction2);
       })
 
       const filterBlogs = document.querySelector("#filter-blogs")
@@ -49,10 +51,7 @@ async function getListPosts(htmlCont, apiUrl, htmlFunction) {
 
   } catch (error) {
     console.log(error)
-    htmlCont.innerHTML = `<div class="error-msg">
-                            <strong>Something went wrong ...</strong>
-                            <strong>Please try again later</strong>
-                          </div>`
+    htmlCont.innerHTML = displayMessage("error-message")
 
     if (document.querySelector(".view-more-btn")) {
       document.querySelector(".view-more-btn").style.display = "none";

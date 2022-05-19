@@ -1,8 +1,12 @@
+import {displayMessage} from "./components/message.js";
+import {validateString, checkLength, validateEmail} from "./components/validation.js";
+
 const param = new URLSearchParams(window.location.search);
 const blogId = param.get("id")
 const url = `https://hreinngylfason.site/projectexam/wp-json/wp/v2/posts/${blogId}?_embed`;
 const singleBlogContainer = document.querySelector(".single-blog-container");
 const commentsContainer = document.querySelector(".comments");
+const commentForm = document.querySelector("form");
 
 async function getSingleBlogPost() {
 
@@ -49,10 +53,7 @@ async function getSingleBlogPost() {
     }
 
   } catch (error) {
-    singleBlogContainer.innerHTML = `<div class="error-msg">
-                                       <strong>Something went wrong ...</strong>
-                                       <strong>Please try again later</strong>
-                                     </div>`
+    singleBlogContainer.innerHTML = displayMessage("error-message")
     document.querySelector(".single-blog-main-comments").style.display = "none";
 
   } finally {
@@ -61,14 +62,6 @@ async function getSingleBlogPost() {
 }
 
 getSingleBlogPost();
-
-const formatWpDate = (wpdate) => {
-  return new Date(wpdate).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
 
 setTimeout(openModal, 300);
 
@@ -93,3 +86,86 @@ function openModal() {
     }
   }
 }
+
+const formatWpDate = (wpdate) => {
+  return new Date(wpdate).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+}
+
+const commentEndPoint = "https://hreinngylfason.site/projectexam/wp-json/wp/v2/comments";
+const inputs = document.querySelectorAll("form > div :nth-child(2)");
+const commentError = "Comment must be 10 characters or more";
+const nameError = "Name must be 5 characters or more";
+const emailError = "Email must be in a valid format";
+
+inputs.forEach((item) => {
+  item.addEventListener("blur", function () {
+    if (item.value) {
+      switch (item.id) {
+        case "comment-message":
+          validateString(this, item.value, 10, commentError);
+          break;
+        case "comment-name":
+          validateString(this, item.value, 5, nameError);
+          break;
+        case "comment-email":
+          validateString(this, item.value, undefined, emailError);
+          break;
+      }
+    }
+  })
+  item.addEventListener("keyup", function () {
+    switch (item.id) {
+      case "comment-message":
+        checkLength(this, item.value, 10);
+        break;
+      case "comment-name":
+        checkLength(this, item.value, 5);
+        break;
+      case "comment-email":
+        validateEmail(this, item.value);
+        break;
+    }
+  })
+})
+
+commentForm.addEventListener("submit", function (event) {
+  event.preventDefault()
+
+  const comment = document.querySelector("#comment-message")
+  const name = document.querySelector("#comment-name")
+  const email = document.querySelector("#comment-email")
+
+  const commentVal = validateString(comment, comment.value, 10, "Comment must be more than 10 characters")
+  const nameVal = validateString(name, name.value, 5, "Name must be 5 characters or more")
+  const emailVal = validateString(email, email.value, null, "Email must be in a valid format")
+
+  if (commentVal && nameVal && emailVal) {
+    const data = JSON.stringify({
+      post: blogId,
+      author_name: name.value,
+      author_email: email.value,
+      content: comment.value,
+    });
+
+    async function postComment() {
+      try {
+        const response = await fetch(commentEndPoint, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/json'}, body: data
+        })
+        await response.json();
+
+        commentForm.innerHTML += displayMessage("success-message", "Thank you for commenting", "It will be appear when approved")
+
+      } catch (error) {
+        commentForm.innerHTML += displayMessage("error-message")
+      }
+    }
+
+    postComment();
+  }
+})

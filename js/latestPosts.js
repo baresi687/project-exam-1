@@ -1,3 +1,5 @@
+import {getListPosts} from "./listApiFunction.js";
+
 const arrowLeft = document.querySelector(".fa-angle-left");
 const arrowRight = document.querySelector(".fa-angle-right");
 const scrollValue = document.querySelector(".posts")

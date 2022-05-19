@@ -1,3 +1,5 @@
+import {validateString, checkLength, validateEmail} from "./components/validation.js";
+
 const form = document.querySelector("form");
 const inputs = document.querySelectorAll("form > div :nth-child(2)");
 const nameError = "Name must be more than 5 characters";
@@ -61,49 +63,3 @@ form.addEventListener("submit", function (event) {
     form.reset();
   }
 })
-
-function validateString(elem, value, length, errorMsg) {
-  if (elem.id === "email") {
-    if (!validateEmail(elem, elem.value)) {
-      document.querySelector(`#${elem.id} ~ .input-error`).innerHTML = emailError;
-      elem.classList.add("input-error-border")
-      return false
-    } else {
-      elem.classList.remove("input-error-border")
-      return true
-    }
-  } else {
-    if (!checkLength(elem, value, length)) {
-      elem.classList.add("input-error-border")
-      document.querySelector(`#${elem.id} ~ .input-error`).innerHTML = errorMsg;
-      return false
-    } else {
-      elem.classList.remove("input-error-border")
-      document.querySelector(`#${elem.id} ~ .input-error`).innerHTML = "";
-      return true;
-    }
-  }
-}
-
-function checkLength(elem, value, length) {
-  if (value.trim().length > length) {
-    elem.nextElementSibling.classList.add("show-checkmark")
-    document.querySelector(`#${elem.id} ~ .input-error`).innerHTML = "";
-    return true;
-  } else {
-    elem.nextElementSibling.classList.remove("show-checkmark")
-    return false
-  }
-}
-
-function validateEmail(elem, email) {
-  const regExp = /\S+@\S+\.\S+/;
-  if (regExp.test(email)) {
-    elem.nextElementSibling.classList.add("show-checkmark")
-    document.querySelector(`#${elem.id} ~ .input-error`).innerHTML = "";
-    return true;
-  } else {
-    elem.nextElementSibling.classList.remove("show-checkmark")
-    return false;
-  }
-}
