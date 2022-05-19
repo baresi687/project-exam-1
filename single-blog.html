@@ -17,7 +17,7 @@
   <link rel="stylesheet" href="./css/normalize.css"/>
   <link rel="stylesheet" href="./css/single-blog.css"/>
   <link rel="stylesheet" href="./css/styles.css"/>
-  <script src="./js/singleBlog.js" defer></script>
+  <script src="./js/singleBlog.js" type="module" defer></script>
   <script src="./js/script.js" defer></script>
   <title class="single-blog-title">Pawtalk | Blog | </title>
   <!-- Hotjar Tracking Code for https://project-exam-1-hreinn.netlify.app/ -->
@@ -88,16 +88,22 @@
                 <div>
                   <label for="comment-message">Comment</label>
                   <textarea id="comment-message" rows="8" placeholder="Your Comment"></textarea>
+                  <i class="fa-solid fa-check"></i>
+                  <div class="input-error"></div>
                 </div>
                 <div>
                   <label for="comment-name">Name</label>
                   <input type="text" id="comment-name" placeholder="Your name">
+                  <i class="fa-solid fa-check"></i>
+                  <div class="input-error"></div>
                 </div>
                 <div>
                   <label for="comment-email">Email</label>
                   <input type="text" id="comment-email" placeholder="Your email">
+                  <i class="fa-solid fa-check"></i>
+                  <div class="input-error"></div>
                 </div>
-                <input type="submit" class="button">
+                <input type="submit" value="Post comment" class="button">
               </form>
             </div>
           </div>

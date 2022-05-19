@@ -151,18 +151,46 @@ header .hamburger-menu {
 
 input[type=text], textarea {
   height: 40px;
+  padding-right: 40px;
   border-radius: 8px;
-  border: none;
+  border: 1px solid #D0D0D0;
   text-indent: 8px;
 }
 
 form label {
   display: block;
+  padding-bottom: 8px;
 }
 
-form input[type=text]:not(#newsletter), form textarea {
-  border: 1px solid #D0D0D0;
-  padding-right: 40px;
+.newsletter form label {
+  padding: 0;
+}
+
+form i {
+  position: absolute;
+  right: 8px;
+  top: 40px;
+  font-size: 16px;
+  color: #07994b;
+  visibility: hidden;
+}
+
+.show-checkmark {
+  visibility: visible;
+}
+
+.input-error {
+  margin: 16px 0;
+  color: #e6382c;
+}
+
+form > div .input-error-border {
+  border: 1px solid #e6382c;
+}
+
+#newsletter {
+  padding: initial;
+  border: none;
 }
 
 .newsletter form {
@@ -299,16 +327,27 @@ footer ul li {
   }
 }
 
-.error-msg {
+.message {
   width: 100%;
   padding: 24px;
   margin-bottom: 32px;
-  background-color: #f6dcdd;
-  color: #c9646a;
+  border: 2px solid;
   border-radius: var(--gutter-sm-8);
 }
 
-.error-msg strong:first-of-type {
+.error-message {
+  background-color: #f6dcdd;
+  color: #c9646a;
+  border-color: #c9646a;
+}
+
+.success-message {
+  background-color: #dff0d8;
+  color: #5c975c;
+  border-color: #5c975c;
+}
+
+.message strong:first-of-type {
   display: block;
   padding-bottom: 8px;
 }
@@ -464,7 +503,7 @@ footer ul li {
     max-width: 272px;
   }
 
-  .error-msg {
+  .message {
     width: fit-content;
     margin: 0 auto 32px auto;
   }
