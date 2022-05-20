@@ -94,8 +94,8 @@ const formatWpDate = (wpdate) => {
     day: 'numeric'
   })
 }
-
-const commentEndPoint = "https://hreinngylfason.site/projectexam/wp-json/wp/v2/comments";
+const corsFix = "https://noroffcors.herokuapp.com/";
+const commentEndPoint = corsFix + "https://hreinngylfason.site/projectexam/wp-json/wp/v2/comments";
 const inputs = document.querySelectorAll("form > div :nth-child(2)");
 const commentError = "Comment must be 10 characters or more";
 const nameError = "Name must be 5 characters or more";
