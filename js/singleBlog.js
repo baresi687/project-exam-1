@@ -144,7 +144,7 @@ commentForm.addEventListener("submit", function (event) {
   const emailVal = validateString(email, email.value, null, "Email must be in a valid format")
 
   if (commentVal && nameVal && emailVal) {
-    const data = JSON.stringify({
+    let data = JSON.stringify({
       post: blogId,
       author_name: name.value,
       author_email: email.value,
