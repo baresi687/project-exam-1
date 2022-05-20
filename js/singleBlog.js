@@ -154,7 +154,7 @@ commentForm.addEventListener("submit", function (event) {
     async function postComment() {
       try {
         const response = await fetch(commentEndPoint, {
-          method: 'POST',
+          method: 'post',
           headers: {'Content-Type': 'application/json; charset=utf-8', "cache-control": "no-cache"}, body: data
         })
         await response.json();
