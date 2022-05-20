@@ -6,7 +6,7 @@ const blogId = param.get("id")
 const url = `https://hreinngylfason.site/projectexam/wp-json/wp/v2/posts/${blogId}?_embed`;
 const singleBlogContainer = document.querySelector(".single-blog-container");
 const commentsContainer = document.querySelector(".comments");
-const commentForm = document.querySelector("form");
+const commentForm = document.querySelector("#commentForm");
 
 async function getSingleBlogPost() {
 
