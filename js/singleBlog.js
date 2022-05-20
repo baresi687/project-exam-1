@@ -150,6 +150,7 @@ commentForm.addEventListener("submit", function (event) {
       author_email: email.value,
       content: comment.value,
     });
+    console.log(data)
 
     async function postComment() {
       try {
@@ -166,6 +167,6 @@ commentForm.addEventListener("submit", function (event) {
       }
     }
 
-    postComment();
+    postComment().then();
   }
 })
