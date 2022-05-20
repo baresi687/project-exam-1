@@ -163,7 +163,8 @@ commentForm.addEventListener("submit", function (event) {
         commentForm.innerHTML += displayMessage("success-message", "Thank you for commenting", "It will be appear when approved")
 
       } catch (error) {
-        commentForm.innerHTML += displayMessage("error-message")
+        console.log(error);
+        commentForm.innerHTML += displayMessage("error-message");
       }
     }
 
