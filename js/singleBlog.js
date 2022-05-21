@@ -1,5 +1,5 @@
 import {displayMessage} from "./components/message.js";
-import {validateString, checkLength, validateEmail} from "./components/validation.js";
+import {checkLength, validateEmail, validateString} from "./components/validation.js";
 
 const param = new URLSearchParams(window.location.search);
 const blogId = param.get("id")
@@ -94,6 +94,7 @@ const formatWpDate = (wpdate) => {
     day: 'numeric'
   })
 }
+
 const corsFix = "https://noroffcors.herokuapp.com/";
 const commentEndPoint = corsFix + "https://hreinngylfason.site/projectexam/wp-json/wp/v2/comments";
 const inputs = document.querySelectorAll("form > div :nth-child(2)");
@@ -133,41 +134,37 @@ inputs.forEach((item) => {
 })
 
 commentForm.addEventListener("submit", function (event) {
-  event.preventDefault()
-
-  const comment = document.querySelector("#comment-message")
-  const name = document.querySelector("#comment-name")
-  const email = document.querySelector("#comment-email")
-
-  const commentVal = validateString(comment, comment.value, 10, "Comment must be more than 10 characters")
-  const nameVal = validateString(name, name.value, 5, "Name must be 5 characters or more")
-  const emailVal = validateString(email, email.value, null, "Email must be in a valid format")
+  event.preventDefault();
+  const message = document.querySelector("#comment-message");
+  const name = document.querySelector("#comment-name");
+  const email = document.querySelector("#comment-email");
+  const commentVal = validateString(message, message.value, 10, commentError)
+  const nameVal = validateString(name, name.value, 5, nameError)
+  const emailVal = validateString(email, email.value, null, emailError)
 
   if (commentVal && nameVal && emailVal) {
     const data = JSON.stringify({
       post: blogId,
       author_name: name.value,
       author_email: email.value,
-      content: comment.value,
+      content: message.value,
     });
-    console.log(data)
 
-    async function postComment() {
-      try {
-        const response = await fetch(commentEndPoint, {
-          method: 'post',
-          headers: {'Content-Type': 'application/json; charset=utf-8', "cache-control": "no-cache"}, body: data
-        })
-        await response.json();
-
-        commentForm.innerHTML += displayMessage("success-message", "Thank you for commenting", "It will be appear when approved")
-
-      } catch (error) {
-        console.log(error);
-        commentForm.innerHTML += displayMessage("error-message");
-      }
-    }
-
-    postComment().then();
+    postComment(data);
   }
 })
+
+async function postComment(data) {
+  try {
+    const response = await fetch(commentEndPoint, {
+      method: 'post',
+      headers: {'Content-Type': 'application/json; charset=utf-8', "cache-control": "no-cache"}, body: data
+    })
+    await response.json()
+    commentForm.innerHTML += displayMessage("success-message", "Thank you for commenting", "It will be appear when approved")
+
+  } catch (error) {
+    console.log(error);
+    commentForm.innerHTML += displayMessage("error-message");
+  }
+}

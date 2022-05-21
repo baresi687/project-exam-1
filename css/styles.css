@@ -149,12 +149,16 @@ header .hamburger-menu {
   border-radius: 0;
 }
 
-input[type=text], textarea {
+input[type=text], input[type=email], textarea {
   height: 40px;
   padding-right: 40px;
   border-radius: 8px;
   border: 1px solid #D0D0D0;
   text-indent: 8px;
+}
+
+input[type=email] {
+  text-transform: lowercase;
 }
 
 form label {
