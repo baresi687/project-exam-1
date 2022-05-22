@@ -151,10 +151,9 @@ header .hamburger-menu {
 
 input[type=text], input[type=email], textarea {
   height: 40px;
-  padding-right: 40px;
+  padding: 0 40px 0 8px;
   border-radius: 8px;
   border: 1px solid #D0D0D0;
-  text-indent: 8px;
 }
 
 form label {
@@ -189,7 +188,7 @@ form > div .input-error-border {
 }
 
 #newsletter {
-  padding: initial;
+  padding: 0 8px;
   border: none;
 }
 
