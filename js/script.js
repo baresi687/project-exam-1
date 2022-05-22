@@ -11,3 +11,11 @@ hamburgerIcon.onclick = () => {
     hamburgerIcon.classList.add("fa", "fa-bars");
   }
 }
+
+window.addEventListener("click", function (event) {
+  if (event.target !== navigationMenu && event.target !== hamburgerIcon && navigationMenu.classList.contains("show-menu")) {
+    navigationMenu.classList.remove("show-menu")
+    hamburgerIcon.classList.remove("fa-solid", "fa-x");
+    hamburgerIcon.classList.add("fa", "fa-bars");
+  }
+})
