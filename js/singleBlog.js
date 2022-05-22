@@ -5,8 +5,6 @@ const param = new URLSearchParams(window.location.search);
 const blogId = param.get("id")
 const url = `https://hreinngylfason.site/projectexam/wp-json/wp/v2/posts/${blogId}?_embed`;
 const singleBlogContainer = document.querySelector(".single-blog-container");
-const commentsContainer = document.querySelector(".comments");
-const commentForm = document.querySelector("#commentForm");
 
 async function getSingleBlogPost() {
 
@@ -57,13 +55,19 @@ async function getSingleBlogPost() {
     document.querySelector(".single-blog-main-comments").style.display = "none";
 
   } finally {
-
+    openModal();
   }
 }
 
 getSingleBlogPost();
 
-setTimeout(openModal, 300);
+const formatWpDate = (wpdate) => {
+  return new Date(wpdate).toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  })
+}
 
 function openModal() {
   const modal = document.querySelector(".modal")
@@ -87,14 +91,8 @@ function openModal() {
   }
 }
 
-const formatWpDate = (wpdate) => {
-  return new Date(wpdate).toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
-}
-
+const commentsContainer = document.querySelector(".comments");
+const commentForm = document.querySelector("#commentForm");
 const corsFix = "https://noroffcors.herokuapp.com/";
 const commentEndPoint = corsFix + "https://hreinngylfason.site/projectexam/wp-json/wp/v2/comments";
 const inputs = document.querySelectorAll("form > div :nth-child(2)");
