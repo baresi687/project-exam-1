@@ -465,10 +465,16 @@ footer ul li {
   }
 
   .posts {
-    overflow: hidden;
+    overflow: auto;
     scroll-behavior: smooth;
     max-width: 800px;
     margin: 0 auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .posts::-webkit-scrollbar {
+    display: none;
   }
 
   .dots-container {
