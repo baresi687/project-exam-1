@@ -79,6 +79,11 @@ img {
   border-radius: 8px;
   color: var(--body-background-color);
   cursor: pointer;
+  transition: all .1s ease-in;
+}
+
+.button:hover {
+  transform: scale(0.965555);
 }
 
 .button-transparent {
