@@ -1,5 +1,5 @@
 function validateString(elem, value, length, errorMsg) {
-  if (elem.id === "email" || elem.id === "comment-email") {
+  if (elem.id === "your-email" || elem.id === "comment-email") {
     if (!validateEmail(elem, elem.value)) {
       document.querySelector(`#${elem.id} ~ .input-error`).innerHTML = errorMsg;
       elem.classList.add("input-error-border")

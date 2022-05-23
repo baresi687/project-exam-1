@@ -106,10 +106,6 @@ small {
   padding-top: 8px;
 }
 
-.message {
-  margin-top: 32px;
-}
-
 @media screen and (min-width: 767px) {
   .single-blog-container {
     display: flex;
@@ -145,10 +141,6 @@ small {
     background-color: #404040;
     border-radius: 4px;
     pointer-events: none;
-  }
-
-  .leave-a-comment .message {
-    margin: 32px auto 32px auto;
   }
 
   .single-blog-main-comments .container {
