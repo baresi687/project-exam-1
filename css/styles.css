@@ -337,7 +337,6 @@ footer ul li {
   margin: 32px auto 32px auto;
   border: 2px solid;
   border-radius: var(--gutter-sm-8);
-  font-size: 1.2rem;
 }
 
 .error-message {
