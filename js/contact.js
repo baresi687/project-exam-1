@@ -74,9 +74,9 @@ async function submitContactform(data) {
       body: data
     })
     await response.json();
-    form.innerHTML += displayMessage("success-message", "Form submitted successfully", "You will hear from us soon");
+    displayMessage(form, "success-message", "Form submitted successfully", "You will hear from us soon");
 
   } catch (error) {
-    form.innerHTML += displayMessage("error-message");
+    displayMessage(form, "error-message");
   }
 }

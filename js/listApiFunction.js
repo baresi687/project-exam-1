@@ -51,7 +51,7 @@ export async function getListPosts(htmlCont, apiUrl, htmlFunction, sortFunction1
 
   } catch (error) {
     console.log(error)
-    htmlCont.innerHTML = displayMessage("error-message")
+    displayMessage(htmlCont, "error-message")
 
     if (document.querySelector(".view-more-btn")) {
       document.querySelector(".view-more-btn").style.display = "none";

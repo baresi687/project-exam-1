@@ -51,8 +51,9 @@ async function getSingleBlogPost() {
     }
 
   } catch (error) {
-    singleBlogContainer.innerHTML = displayMessage("error-message")
+    displayMessage(singleBlogContainer, "error-message")
     document.querySelector(".single-blog-main-comments").style.display = "none";
+    document.querySelector(".loader").style.display = "none";
 
   } finally {
     openModal();
@@ -159,10 +160,10 @@ async function postComment(data) {
       headers: {'Content-Type': 'application/json; charset=utf-8', "cache-control": "no-cache"}, body: data
     })
     await response.json()
-    commentForm.innerHTML += displayMessage("success-message", "Thank you for commenting", "It will be appear when approved")
+    displayMessage(commentForm, "success-message", "Thank you for commenting", "It will be appear when approved")
 
   } catch (error) {
     console.log(error);
-    commentForm.innerHTML += displayMessage("error-message");
+    displayMessage(commentForm, "error-message");
   }
 }
