@@ -1,6 +1,7 @@
 import {validateString, checkLength, validateEmail} from "./components/validation.js";
+import {displayMessage} from "./components/message.js";
 
-const form = document.querySelector("form");
+const form = document.querySelector("#form");
 const inputs = document.querySelectorAll("form > div :nth-child(2)");
 const nameError = "Name must be more than 5 characters";
 const emailError = "Email must be in a valid format";
@@ -11,16 +12,16 @@ inputs.forEach((item) => {
   item.addEventListener("focus", function () {
     item.addEventListener("keyup", function () {
       switch (item.id) {
-        case "name":
+        case "your-name":
           checkLength(this, item.value, 5);
           break;
-        case "email":
+        case "your-email":
           validateEmail(this, item.value);
           break;
-        case "subject":
+        case "your-subject":
           checkLength(this, item.value, 15);
           break;
-        case "message":
+        case "your-message":
           checkLength(this, item.value, 25);
           break;
       }
@@ -28,16 +29,16 @@ inputs.forEach((item) => {
     item.addEventListener("blur", function () {
       if (item.value) {
         switch (item.id) {
-          case "name":
+          case "your-name":
             validateString(this, item.value, 5, nameError);
             break;
-          case "email":
+          case "your-email":
             validateString(this, item.value, null, emailError);
             break;
-          case "subject":
+          case "your-subject":
             validateString(this, item.value, 15, subjectError);
             break;
-          case "message":
+          case "your-message":
             validateString(this, item.value, 25, messageError);
             break;
         }
@@ -48,10 +49,10 @@ inputs.forEach((item) => {
 
 form.addEventListener("submit", function (event) {
   event.preventDefault();
-  const name = document.querySelector("#name")
-  const email = document.querySelector("#email")
-  const subject = document.querySelector("#subject")
-  const message = document.querySelector("#message")
+  const name = document.querySelector("#your-name")
+  const email = document.querySelector("#your-email")
+  const subject = document.querySelector("#your-subject")
+  const message = document.querySelector("#your-message")
 
   const nameVal = validateString(name, name.value, 5, nameError)
   const emailVal = validateString(email, email.value, null, emailError)
@@ -59,7 +60,23 @@ form.addEventListener("submit", function (event) {
   const messageVal = validateString(message, message.value, 25, messageError)
 
   if (nameVal && emailVal && subjectVal && messageVal) {
-    document.querySelector(".form-success").style.display = "block";
-    form.reset();
+    const formData = new FormData(event.target)
+    submitContactform(formData);
   }
 })
+
+const contactEndPoint = `https://hreinngylfason.site/projectexam/wp-json/contact-form-7/v1/contact-forms/77/feedback`
+
+async function submitContactform(data) {
+  try {
+    const response = await fetch(contactEndPoint, {
+      method: 'post',
+      body: data
+    })
+    await response.json();
+    form.innerHTML += displayMessage("success-message", "Form submitted successfully", "You will hear from us soon");
+
+  } catch (error) {
+    form.innerHTML += displayMessage("error-message");
+  }
+}

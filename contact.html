@@ -71,34 +71,33 @@
     <div class="container">
       <div class="contact-main">
         <div class="contact-form">
-          <form>
+          <form id="form" name="form" method="post">
             <h1 class="heading-1">Contact</h1>
             <div class="full-name">
-              <label for="name">Name</label>
-              <input type="text" id="name" placeholder="Your name">
+              <label for="your-name">Name</label>
+              <input type="text" id="your-name" name="your-name" placeholder="Your name">
               <i class="fa-solid fa-check"></i>
               <div class="input-error"></div>
             </div>
             <div class="email">
-              <label for="email">Email</label>
-              <input type="email" id="email" placeholder="Your email address">
+              <label for="your-email">Email</label>
+              <input type="email" id="your-email" name="your-email" placeholder="Your email address">
               <i class="fa-solid fa-check"></i>
               <div class="input-error"></div>
             </div>
             <div class="subject">
-              <label for="subject">Subject</label>
-              <input type="text" id="subject" placeholder="Your subject">
+              <label for="your-subject">Subject</label>
+              <input type="text" id="your-subject" name="your-subject" placeholder="Your subject">
               <i class="fa-solid fa-check"></i>
               <div class="input-error"></div>
             </div>
             <div class="message-contact">
-              <label for="message">Message</label>
-              <textarea id="message" placeholder="Your message"></textarea>
+              <label for="your-message">Message</label>
+              <textarea id="your-message" name="your-message" placeholder="Your message"></textarea>
               <i class="fa-solid fa-check"></i>
               <div class="input-error"></div>
             </div>
             <input type="submit" value="Submit" class="button">
-            <div class="form-success">Form submitted successfully</div>
           </form>
         </div>
         <div class="contact-image">

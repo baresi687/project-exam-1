@@ -334,7 +334,7 @@ footer ul li {
 .message {
   width: 100%;
   padding: 24px;
-  margin-bottom: 32px;
+  margin: 32px auto 32px auto;
   border: 2px solid;
   border-radius: var(--gutter-sm-8);
 }
@@ -515,6 +515,5 @@ footer ul li {
 
   .message {
     width: fit-content;
-    margin: 0 auto 32px auto;
   }
 }

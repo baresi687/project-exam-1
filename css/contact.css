@@ -20,18 +20,6 @@ form textarea {
   padding-top: 8px;
 }
 
-.form-success {
-  display: none;
-  background-color: #dff0d8;
-  color: #5c975c;
-  font-size: 1em;
-  margin: 32px 0 0 0;
-  padding: 16px;
-  border: 2px solid #5c975c;
-  border-radius: 8px;
-  text-align: center;
-}
-
 .contact-image {
   background-image: url("/img/contact.jpg");
   background-size: cover;
