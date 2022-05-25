@@ -94,8 +94,7 @@ function openModal() {
 
 const commentsContainer = document.querySelector(".comments");
 const commentForm = document.querySelector("#commentForm");
-const corsFix = "https://noroffcors.herokuapp.com/";
-const commentEndPoint = corsFix + "https://hreinngylfason.site/projectexam/wp-json/wp/v2/comments";
+const commentEndPoint = "https://hreinngylfason.site/projectexam/wp-json/wp/v2/comments";
 const inputs = document.querySelectorAll("form > div :nth-child(2)");
 const commentError = "Comment must be 10 characters or more";
 const nameError = "Name must be 5 characters or more";
@@ -142,14 +141,10 @@ commentForm.addEventListener("submit", function (event) {
   const emailVal = validateString(email, email.value, null, emailError)
 
   if (commentVal && nameVal && emailVal) {
-    const data = JSON.stringify({
-      post: blogId,
-      author_name: name.value,
-      author_email: email.value,
-      content: message.value,
-    });
+    const formData = new FormData(event.target);
+    formData.append("post", blogId)
 
-    postComment(data);
+    postComment(formData);
   }
 })
 
@@ -157,13 +152,12 @@ async function postComment(data) {
   try {
     const response = await fetch(commentEndPoint, {
       method: 'post',
-      headers: {'Content-Type': 'application/json; charset=utf-8', "cache-control": "no-cache"}, body: data
+      body: data
     })
     await response.json()
     displayMessage(commentForm, "success-message", "Thank you for commenting", "It will be appear when approved")
 
   } catch (error) {
-    console.log(error);
     displayMessage(commentForm, "error-message");
   }
 }
