@@ -509,6 +509,10 @@ footer ul li {
     justify-content: space-between;
   }
 
+  .footer-content > div:not(:last-child) {
+    flex: 1;
+  }
+
   .footer-about p:nth-child(2) {
     max-width: 272px;
   }
