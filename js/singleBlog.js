@@ -1,10 +1,13 @@
 import {validateString, checkLength, validateEmail} from "./components/validation.js";
 import {postToWordPress} from "./components/postToWordPress.js";
+import {displayMessage} from "./components/message.js";
 
 const param = new URLSearchParams(window.location.search);
 const blogId = param.get("id")
 const url = `https://hreinngylfason.site/projectexam/wp-json/wp/v2/posts/${blogId}?_embed`;
 const singleBlogContainer = document.querySelector(".single-blog-container");
+const commentContainer = document.querySelector(".single-blog-main-comments");
+const singleCommentContainer = document.querySelector(".comments");
 
 async function getSingleBlogPost() {
 
@@ -36,23 +39,24 @@ async function getSingleBlogPost() {
                                        <span class="author-signed">- ${author}</span>
                                      </div>`
 
+    commentContainer.style.display = "block";
+
     if (responseJSON._embedded.replies) {
       const comments = responseJSON._embedded.replies[0];
 
       comments.forEach((item) => {
         const commentDate = formatWpDate(item.date)
-        commentsContainer.innerHTML += `<div class="single-comment">
-                                          <strong>${item.author_name} </strong>on <span>${commentDate}</span>
-                                           ${item.content.rendered}
-                                        </div>`
+        singleCommentContainer.innerHTML += `<div class="single-comment">
+                                               <strong>${item.author_name} </strong>on <span>${commentDate}</span>
+                                               ${item.content.rendered}
+                                             </div>`
       })
     } else {
       document.querySelector(".single-blog-comments h3").style.display = "none";
     }
 
   } catch (error) {
-    displayMessage(singleBlogContainer, "error-message")
-    document.querySelector(".single-blog-main-comments").style.display = "none";
+    displayMessage(singleBlogContainer, "error-message");
     document.querySelector(".loader").style.display = "none";
 
   } finally {
@@ -92,7 +96,6 @@ function openModal() {
   }
 }
 
-const commentsContainer = document.querySelector(".comments");
 const commentForm = document.querySelector("#commentForm");
 const commentEndPoint = "https://hreinngylfason.site/projectexam/wp-json/wp/v2/comments";
 const inputs = document.querySelectorAll("form > div :nth-child(2)");

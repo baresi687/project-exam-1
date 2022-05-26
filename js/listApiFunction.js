@@ -50,7 +50,6 @@ export async function getListPosts(htmlCont, apiUrl, htmlFunction, sortFunction1
     }
 
   } catch (error) {
-    console.log(error)
     displayMessage(htmlCont, "error-message")
 
     if (document.querySelector(".view-more-btn")) {

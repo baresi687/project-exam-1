@@ -72,6 +72,10 @@ h1.heading-1 {
   visibility: visible;
 }
 
+.single-blog-main-comments {
+  display: none;
+}
+
 .single-blog-main-comments, .leave-a-comment {
   margin-top: 40px;
 }
