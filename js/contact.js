@@ -1,5 +1,5 @@
 import {validateString, checkLength, validateEmail} from "./components/validation.js";
-import {displayMessage} from "./components/message.js";
+import {postToWordPress} from "./components/postToWordPress.js";
 
 const form = document.querySelector("#form");
 const inputs = document.querySelectorAll("form > div :nth-child(2)");
@@ -7,6 +7,7 @@ const nameError = "Name must be more than 5 characters";
 const emailError = "Email must be in a valid format";
 const subjectError = "Subject must be more than 15 characters";
 const messageError = "Message must be more than 25 characters";
+const contactEndPoint = `https://hreinngylfason.site/projectexam/wp-json/contact-form-7/v1/contact-forms/77/feedback`;
 
 inputs.forEach((item) => {
   item.addEventListener("focus", function () {
@@ -61,22 +62,7 @@ form.addEventListener("submit", function (event) {
 
   if (nameVal && emailVal && subjectVal && messageVal) {
     const formData = new FormData(event.target)
-    submitContactform(formData);
+
+    postToWordPress(contactEndPoint, formData, this, "Form submitted successfully", "You will hear from us soon")
   }
 })
-
-const contactEndPoint = `https://hreinngylfason.site/projectexam/wp-json/contact-form-7/v1/contact-forms/77/feedback`
-
-async function submitContactform(data) {
-  try {
-    const response = await fetch(contactEndPoint, {
-      method: 'post',
-      body: data
-    })
-    await response.json();
-    displayMessage(form, "success-message", "Form submitted successfully", "You will hear from us soon");
-
-  } catch (error) {
-    displayMessage(form, "error-message");
-  }
-}

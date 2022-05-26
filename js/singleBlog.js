@@ -1,5 +1,5 @@
-import {displayMessage} from "./components/message.js";
-import {checkLength, validateEmail, validateString} from "./components/validation.js";
+import {validateString, checkLength, validateEmail} from "./components/validation.js";
+import {postToWordPress} from "./components/postToWordPress.js";
 
 const param = new URLSearchParams(window.location.search);
 const blogId = param.get("id")
@@ -144,20 +144,6 @@ commentForm.addEventListener("submit", function (event) {
     const formData = new FormData(event.target);
     formData.append("post", blogId)
 
-    postComment(formData);
+    postToWordPress(commentEndPoint, formData, this, "Thank you for commenting", "It will be appear when approved");
   }
 })
-
-async function postComment(data) {
-  try {
-    const response = await fetch(commentEndPoint, {
-      method: 'post',
-      body: data
-    })
-    await response.json()
-    displayMessage(commentForm, "success-message", "Thank you for commenting", "It will be appear when approved")
-
-  } catch (error) {
-    displayMessage(commentForm, "error-message");
-  }
-}
