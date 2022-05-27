@@ -6,8 +6,8 @@ export async function postToWordPress(endPoint, data, elem, message1, message2) 
       method: 'post',
       body: data
     })
-    await response.json()
-    displayMessage(elem, "success-message", message1, message2)
+    response.ok ? displayMessage(elem, "success-message", message1, message2) : displayMessage(elem, "error-message");
+    return await response.json();
 
   } catch (error) {
     displayMessage(elem, "error-message");
