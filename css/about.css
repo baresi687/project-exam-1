@@ -1,3 +1,8 @@
+.about-img img {
+  display: block;
+  margin-bottom: 24px;
+}
+
 .about-paragraphs p:last-of-type {
   margin-bottom: 32px;
 }
