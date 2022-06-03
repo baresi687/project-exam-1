@@ -1,7 +1,9 @@
 # Project Exam 1 - Pawtalk
 
-<img src="/img/project-exam-1-readme-mobile.jpg" height="700" alt="Pawtalk Mobile view">
-<img src="/img/project-exam-1-readme-desktop.jpg" height="700" alt="Pawtalk Mobile Desktop view">
+<div>
+  <img src="/img/project-exam-1-readme-mobile.jpg" height="500" alt="Pawtalk Mobile view">
+  <img src="/img/project-exam-1-readme-desktop.jpg" height="500" alt="Pawtalk Mobile Desktop view">
+</div>
 
 My Project exam 1.
 
