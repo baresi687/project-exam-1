@@ -2,6 +2,7 @@
 
 <div>
   <img src="/img/project-exam-1-readme-mobile.jpg" height="500" alt="Pawtalk Mobile view">
+  &nbsp&nbsp&nbsp  
   <img src="/img/project-exam-1-readme-desktop.jpg" height="500" alt="Pawtalk Mobile Desktop view">
 </div>
 
