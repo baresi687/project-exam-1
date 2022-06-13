@@ -192,6 +192,13 @@ form > div .input-error-border {
   border: 1px solid #e6382c;
 }
 
+form .loader {
+  width: 32px;
+  height: 32px;
+  border: 4px solid #c0c0c0;
+  border-top: 4px solid var(--brand-links-color);
+}
+
 #newsletter {
   padding: 0 8px;
   border: none;

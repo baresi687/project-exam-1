@@ -1,6 +1,8 @@
 import {displayMessage} from "./message.js";
 
 export async function postToWordPress(endPoint, data, elem, message1, message2) {
+  elem.querySelector(".button").style.display = "none";
+  elem.innerHTML += '<div class="loader"></div>'
   try {
     const response = await fetch(endPoint, {
       method: 'post',
@@ -11,5 +13,9 @@ export async function postToWordPress(endPoint, data, elem, message1, message2) 
 
   } catch (error) {
     displayMessage(elem, "error-message");
+
+  } finally {
+    elem.querySelector(".button").style.display = "block";
+    elem.querySelector(".loader").style.display = "none";
   }
 }
