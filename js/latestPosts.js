@@ -29,6 +29,25 @@ arrowRight.onclick = () => {
   activeDot(slideIndex);
 }
 
+for (let i = 0; i < dots.length; i++) {
+  dots[i].onclick = ((event) => {
+    const dotTarget = Array.from(dots).indexOf(event.target)
+    slideIndex = dotTarget;
+    switch (dotTarget) {
+      case 0:
+        scrollValue.scrollLeft = 0;
+        break;
+      case 1:
+        scrollValue.scrollLeft = 832;
+        break;
+      case 2:
+        scrollValue.scrollLeft = 1664;
+        break;
+    }
+    activeDot(dotTarget)
+  })
+}
+
 function activeDot(index) {
   dots.forEach((item) => {
     item.classList.remove("active");
