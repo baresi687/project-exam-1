@@ -501,6 +501,7 @@ footer ul li {
     margin: 0 8px;
     background-color: #D0D0D0;
     border-radius: 50%;
+    cursor: pointer;
   }
 
   .dots-container .active {
