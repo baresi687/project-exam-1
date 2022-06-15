@@ -142,7 +142,7 @@ small {
     top: 16px;
     right: 16px;
     color: var(--body-background-color);
-    background-color: #404040;
+    background-color: rgb(24 24 24 / 40%);
     border-radius: 4px;
     pointer-events: none;
   }
@@ -156,7 +156,7 @@ small {
 
   .single-blog-main-comments .container::before {
     content: "";
-    background-image: url("/img/dog-transparent.png");
+    background-image: url("../img/dog-transparent.png");
     background-size: contain;
     background-repeat: no-repeat;
     max-width: 344px;
