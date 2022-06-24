@@ -47,7 +47,7 @@ async function getSingleBlogPost() {
       comments.forEach((item) => {
         const commentDate = formatWpDate(item.date)
         singleCommentContainer.innerHTML += `<div class="single-comment">
-                                               <strong>${item.author_name} </strong>on <span>${commentDate}</span>
+                                               <strong class="single-comment-author">${item.author_name} </strong>on <span>${commentDate}</span>
                                                ${item.content.rendered}
                                              </div>`
       })

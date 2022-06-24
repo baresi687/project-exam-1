@@ -87,6 +87,10 @@ h1.heading-1 {
   margin-bottom: 32px;
 }
 
+.single-comment-author {
+  text-transform: capitalize;
+}
+
 .single-comment p {
   margin-bottom: 0;
 }
