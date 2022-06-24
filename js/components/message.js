@@ -4,6 +4,6 @@ export function displayMessage(elem, msgClass, message1 = "Something went wrong 
                       <strong>${message2}</strong>
                     </div>`
   if (elem.tagName === "FORM") {
-    elem.querySelector(".message").scrollIntoView({behavior: "smooth", block: "center"})
+    elem.querySelector(".message").scrollIntoView({block: "center"})
   }
 }
