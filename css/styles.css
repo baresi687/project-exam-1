@@ -8,10 +8,12 @@
   --gutter-sm-8: 8px;
   --gutter-m-16: 16px;
   --gutter-m-32: 32px;
+  --transition-buttons: all .2s ease-in-out;
 }
 
 * {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -79,7 +81,7 @@ img {
   border-radius: 8px;
   color: var(--body-background-color);
   cursor: pointer;
-  transition: all .2s ease-in-out;
+  transition: var(--transition-buttons);
 }
 
 .button:hover {
@@ -378,6 +380,34 @@ footer ul li {
   padding-bottom: 8px;
 }
 
+.scroll-to-top {
+  position: fixed;
+  bottom: 48px;
+  right: 24px;
+  width: 48px;
+  height: 48px;
+  background-color: var(--brand-color-light);
+  color: var(--body-background-color);
+  border-radius: 50%;
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: var(--transition-buttons);
+}
+
+.show-scroll-to-top {
+  visibility: visible;
+  opacity: 1;
+}
+
+.fa-angle-up {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 2rem;
+}
+
 @media screen and (min-width: 767px) {
   .container, .header-navigation {
     max-width: 1008px
@@ -492,7 +522,6 @@ footer ul li {
 
   .posts {
     overflow: auto;
-    scroll-behavior: smooth;
     max-width: 800px;
     margin: 0 auto;
     -ms-overflow-style: none;
@@ -546,5 +575,12 @@ footer ul li {
 
   .message {
     width: fit-content;
+  }
+}
+
+@media (hover: hover) {
+  .scroll-to-top:hover {
+    filter: brightness(108%);
+    background-color: var(--brand-links-color);
   }
 }
