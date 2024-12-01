@@ -71,10 +71,6 @@ The blog posts content for the website will be stored on a WordPress installatio
 - JavaScript
 - WordPress Headless REST API
 
-## Deployed link
-
-https://project-exam-1-hreinn.netlify.app/
-
 ## Contact
 
 [My LinkedIn page](https://www.linkedin.com/in/hreinn-gylfason-b9a48521a/)
